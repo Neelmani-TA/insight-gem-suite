@@ -6,58 +6,58 @@
 
 @layer base {
   :root {
-    /* Core background and foreground */
-    --background: 210 30% 8%;
-    --foreground: 213 31% 91%;
+    /* Core background and foreground - Light theme */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
-    /* Card system with glass morphism */
-    --card: 210 25% 12%;
-    --card-foreground: 213 31% 91%;
-    --card-glass: 210 25% 15%;
+    /* Card system with subtle backgrounds */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-glass: 240 6% 97%;
 
     /* Popover system */
-    --popover: 210 25% 12%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
 
-    /* Primary brand colors - AI blue theme */
+    /* Primary brand colors - Professional blue */
     --primary: 214 84% 56%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 100%;
     --primary-glow: 214 84% 70%;
 
     /* Secondary colors */
-    --secondary: 210 25% 18%;
-    --secondary-foreground: 213 31% 91%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
     /* Muted colors for subtle elements */
-    --muted: 210 25% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    /* Accent colors - Purple AI accent */
+    /* Accent colors - Professional purple */
     --accent: 266 85% 58%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Border and input styling */
-    --border: 210 25% 18%;
-    --input: 210 25% 15%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
     --ring: 214 84% 56%;
 
     /* Border radius for consistent design */
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* AI-themed gradients */
+    /* Professional gradients */
     --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(266 85% 58%));
-    --gradient-secondary: linear-gradient(135deg, hsl(210 25% 15%), hsl(210 25% 18%));
+    --gradient-secondary: linear-gradient(135deg, hsl(240 6% 97%), hsl(240 4.8% 95.9%));
     --gradient-accent: linear-gradient(135deg, hsl(266 85% 58%), hsl(290 85% 65%));
-    --gradient-glass: linear-gradient(135deg, hsl(210 25% 12% / 0.8), hsl(210 25% 15% / 0.9));
+    --gradient-glass: linear-gradient(135deg, hsl(240 6% 97% / 0.8), hsl(240 4.8% 95.9% / 0.9));
 
-    /* Shadows with glow effects */
-    --shadow-glow: 0 0 40px hsl(214 84% 56% / 0.3);
-    --shadow-card: 0 8px 32px hsl(210 30% 8% / 0.4);
-    --shadow-elevated: 0 20px 60px hsl(210 30% 8% / 0.6);
+    /* Professional shadows */
+    --shadow-glow: 0 0 30px hsl(214 84% 56% / 0.15);
+    --shadow-card: 0 1px 3px hsl(240 10% 3.9% / 0.1);
+    --shadow-elevated: 0 4px 12px hsl(240 10% 3.9% / 0.15);
 
     /* Animation and transition system */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -126,15 +126,16 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: radial-gradient(circle at 25% 25%, hsl(214 84% 56% / 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 75% 75%, hsl(266 85% 58% / 0.1) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 25% 25%, hsl(214 84% 56% / 0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 75% 75%, hsl(266 85% 58% / 0.05) 0%, transparent 50%);
   }
 
   /* Glass morphism utility classes */
   .glass {
     background: var(--gradient-glass);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(var(--border) / 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
   }
 
   .glow {

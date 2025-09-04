@@ -111,21 +111,6 @@ const CommentAnalysisTab = () => {
               )}
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground">Max Comments to Analyze</label>
-              <Select value={maxComments.toString()} onValueChange={(value) => setMaxComments(parseInt(value))}>
-                <SelectTrigger className="glass">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {commentLimits.map(limit => (
-                    <SelectItem key={limit} value={limit.toString()}>
-                      {limit} comments
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
           </div>
         </div>
 
