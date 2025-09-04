@@ -299,7 +299,7 @@ credentials = service_account.Credentials.from_service_account_file(
 )
 
 vertexai.init(project=project_id, location="us-central1", credentials=credentials)
-model = GenerativeModel("gemini-1.5-pro")
+model = GenerativeModel("gemini-2.5-pro")
 
 # -------------------------------------------------------------------
 # APP SETUP
