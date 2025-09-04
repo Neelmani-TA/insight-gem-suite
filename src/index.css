@@ -2,41 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Gemini Video Intelligence Design System - Professional AI Dashboard */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core background and foreground */
+    --background: 210 30% 8%;
+    --foreground: 213 31% 91%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system with glass morphism */
+    --card: 210 25% 12%;
+    --card-foreground: 213 31% 91%;
+    --card-glass: 210 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover system */
+    --popover: 210 25% 12%;
+    --popover-foreground: 213 31% 91%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary brand colors - AI blue theme */
+    --primary: 214 84% 56%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 214 84% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors */
+    --secondary: 210 25% 18%;
+    --secondary-foreground: 213 31% 91%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted colors for subtle elements */
+    --muted: 210 25% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors - Purple AI accent */
+    --accent: 266 85% 58%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Destructive colors */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border and input styling */
+    --border: 210 25% 18%;
+    --input: 210 25% 15%;
+    --ring: 214 84% 56%;
 
-    --radius: 0.5rem;
+    /* Border radius for consistent design */
+    --radius: 0.75rem;
+
+    /* AI-themed gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(266 85% 58%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 25% 15%), hsl(210 25% 18%));
+    --gradient-accent: linear-gradient(135deg, hsl(266 85% 58%), hsl(290 85% 65%));
+    --gradient-glass: linear-gradient(135deg, hsl(210 25% 12% / 0.8), hsl(210 25% 15% / 0.9));
+
+    /* Shadows with glow effects */
+    --shadow-glow: 0 0 40px hsl(214 84% 56% / 0.3);
+    --shadow-card: 0 8px 32px hsl(210 30% 8% / 0.4);
+    --shadow-elevated: 0 20px 60px hsl(210 30% 8% / 0.6);
+
+    /* Animation and transition system */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +125,43 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: radial-gradient(circle at 25% 25%, hsl(214 84% 56% / 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 75% 75%, hsl(266 85% 58% / 0.1) 0%, transparent 50%);
+  }
+
+  /* Glass morphism utility classes */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
   }
 }
