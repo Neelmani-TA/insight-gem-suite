@@ -37,7 +37,7 @@ const VideoAnalysisTab = () => {
     'Audio-Text Mining',
     'Product Theme',
     'Ingredients',
-    'Consumer Review',
+    'Ad Vibe',
     'Packaging'
   ];
 

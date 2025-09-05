@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Play, Target, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { MessageSquare, Play, Target } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const location = useLocation();
@@ -13,13 +12,13 @@ const Navbar = () => {
       icon: Play
     },
     {
-      path: '/marketing-analysis', 
+      path: '/marketing-analysis',
       label: 'Marketing Analysis',
       icon: Target
     },
     {
       path: '/comment-analysis',
-      label: 'Comment Analysis', 
+      label: 'Comment Analysis',
       icon: MessageSquare
     }
   ];
@@ -35,7 +34,7 @@ const Navbar = () => {
                 <Play className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold text-foreground">
-                🎬 Gemini Video Intelligence
+                🎬 Video Intelligence
               </span>
             </Link>
           </div>

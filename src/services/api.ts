@@ -101,8 +101,8 @@
 // *Note: Detailed ingredient analysis requires product category specification*
 //     `,
 
-//     "Consumer Review": `
-// # Consumer Review Synthesis
+//     "Ad Vibe": `
+// # Ad Vibe Synthesis
 
 // ## Sentiment Overview
 // - **Positive Reviews:** 78%

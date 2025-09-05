@@ -1,10 +1,10 @@
-import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
-import { Loader2, Play, RotateCcw, MessageSquare } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import VideoUpload from '@/components/VideoUpload';
+import { Loader2, MessageSquare, Play, RotateCcw } from 'lucide-react';
+import React from 'react';
 
 interface SidebarProps {
   activeTab: string;
@@ -17,17 +17,17 @@ interface SidebarProps {
   setSelectedVideo?: (file: File | null) => void;
   analysisOptions?: string[];
   setAnalysisOptions?: (options: string[]) => void;
-  
+
   // Marketing Analysis Props
   demographics?: string[];
   setDemographics?: (demographics: string[]) => void;
   descriptors?: string[];
   setDescriptors?: (descriptors: string[]) => void;
-  
+
   // Comment Analysis Props
   videoUrl?: string;
   setVideoUrl?: (url: string) => void;
-  
+
   // Common Props
   isAnalyzing?: boolean;
   canAnalyze?: boolean;
@@ -63,7 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     'Audio-Text Mining',
     'Product Theme',
     'Ingredients',
-    'Consumer Review',
+    'Ad Vibe',
     'Packaging'
   ];
   const demographicsList = ['Male', 'Female', 'Kids', 'Teens', 'Adults', 'Seniors'];
@@ -155,7 +155,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <h3 className="text-sm font-medium text-foreground">Video Upload</h3>
               <p className="text-xs text-muted-foreground">Upload your MP4 video file</p>
             </div>
-            <VideoUpload 
+            <VideoUpload
               onVideoSelect={setSelectedVideo}
               selectedVideo={selectedVideo}
             />
@@ -166,7 +166,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <h3 className="text-sm font-medium text-foreground">Analysis Options</h3>
               <p className="text-xs text-muted-foreground">Select analysis types</p>
             </div>
-            
+
             <div className="space-y-3">
               {analysisOptionsList.map(option => (
                 <div key={option} className="flex items-center space-x-2">
@@ -175,8 +175,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     checked={analysisOptions.includes(option)}
                     onCheckedChange={(checked) => handleAnalysisOptionChange(option, !!checked)}
                   />
-                  <label 
-                    htmlFor={option} 
+                  <label
+                    htmlFor={option}
                     className="text-sm text-foreground cursor-pointer"
                   >
                     {option}
@@ -214,7 +214,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <h3 className="text-sm font-medium text-foreground">Target Demographics</h3>
               <p className="text-xs text-muted-foreground">Select target audience</p>
             </div>
-            
+
             <div className="space-y-3">
               {demographicsList.map(demographic => (
                 <div key={demographic} className="flex items-center space-x-2">
@@ -223,8 +223,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     checked={demographics.includes(demographic)}
                     onCheckedChange={(checked) => handleDemographicChange(demographic, !!checked)}
                   />
-                  <label 
-                    htmlFor={demographic} 
+                  <label
+                    htmlFor={demographic}
                     className="text-sm text-foreground cursor-pointer"
                   >
                     {demographic}
@@ -239,7 +239,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <h3 className="text-sm font-medium text-foreground">Analysis Descriptors</h3>
               <p className="text-xs text-muted-foreground">Select analysis types</p>
             </div>
-            
+
             <div className="space-y-3">
               {descriptorsList.map(descriptor => (
                 <div key={descriptor} className="flex items-center space-x-2">
@@ -248,8 +248,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     checked={descriptors.includes(descriptor)}
                     onCheckedChange={(checked) => handleDescriptorChange(descriptor, !!checked)}
                   />
-                  <label 
-                    htmlFor={descriptor} 
+                  <label
+                    htmlFor={descriptor}
                     className="text-sm text-foreground cursor-pointer"
                   >
                     {descriptor}
@@ -264,7 +264,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <h3 className="text-sm font-medium text-foreground">Video Upload</h3>
               <p className="text-xs text-muted-foreground">Upload your MP4 video file</p>
             </div>
-            <VideoUpload 
+            <VideoUpload
               onVideoSelect={setSelectedVideo}
               selectedVideo={selectedVideo}
             />
@@ -318,10 +318,10 @@ const Sidebar: React.FC<SidebarProps> = ({
           ) : (
             <Play className="w-4 h-4 mr-2" />
           )}
-          {isAnalyzing ? 'Analyzing...' : 
-           activeTab === 'comment-analysis' ? 'Analyze Comments' : 'Run Analysis'}
+          {isAnalyzing ? 'Analyzing...' :
+            activeTab === 'comment-analysis' ? 'Analyze Comments' : 'Run Analysis'}
         </Button>
-        
+
         <Button
           variant="outline"
           onClick={onReset}
