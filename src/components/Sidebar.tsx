@@ -101,6 +101,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   };
 
   const isValidYouTubeUrl = (url: string) => {
+    if (!url) return false;
     const regex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/;
     return regex.test(url);
   };

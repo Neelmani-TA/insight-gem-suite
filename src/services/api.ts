@@ -404,6 +404,8 @@
 
 //=================================================================================
 
+import axios from 'axios';
+
 export interface VideoAnalysisRequest {
   campaign: string;
   locality: string;
@@ -420,15 +422,12 @@ export interface MarketingAnalysisRequest {
 
 export interface YouTubeCommentsRequest {
   videoUrl: string;
-  maxComments: number;
+  maxComments?: number;
 }
 
-// 🔥 Set this to your backend server
 const API_BASE = "http://localhost:8000";
 
-// ==============================
-// 🔹 Video Analysis API (Tab 1)
-// ==============================
+// Video Analysis API (Tab 1)
 export const analyzeVideoBasic = async (request: VideoAnalysisRequest) => {
   const formData = new FormData();
   formData.append("file", request.video);
@@ -436,47 +435,31 @@ export const analyzeVideoBasic = async (request: VideoAnalysisRequest) => {
   formData.append("locality", request.locality);
   formData.append("options", request.analysisOptions.join(","));
 
-  const response = await fetch(`${API_BASE}/video-analysis`, {
-    method: "POST",
-    body: formData,
+  const response = await axios.post(`${API_BASE}/video-analysis`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
-
-  if (!response.ok) throw new Error("Video analysis failed");
-  return await response.json();
+  return response.data.results;
 };
 
-// ==============================
-// 🔹 Marketing Analysis API (Tab 2)
-// ==============================
+// Marketing Analysis API (Tab 2)
 export const analyzeAdMarketing = async (request: MarketingAnalysisRequest) => {
   const formData = new FormData();
   formData.append("file", request.video);
-  formData.append("campaign", request.campaign);
-  formData.append("demographics", request.demographics.join(","));
   formData.append("descriptors", request.descriptors.join(","));
+  formData.append("demographics", request.demographics.join(","));
+  formData.append("video_type", request.campaign);
 
-  const response = await fetch(`${API_BASE}/marketing-analysis`, {
-    method: "POST",
-    body: formData,
+  const response = await axios.post(`${API_BASE}/marketing-analysis`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
-
-  if (!response.ok) throw new Error("Marketing analysis failed");
-  return await response.json();
+  return response.data.results;
 };
 
-// ==============================
-// 🔹 YouTube Comment Analysis API (Tab 3)
-// ==============================
+// YouTube Comments Analysis API (Tab 3)
 export const analyzeYouTubeComments = async (request: YouTubeCommentsRequest) => {
-  const response = await fetch(`${API_BASE}/comment-analysis`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      video_url: request.videoUrl,
-      max_comments: request.maxComments, // send the max comments too
-    }),
+  const response = await axios.post(`${API_BASE}/comment-analysis`, {
+    video_url: request.videoUrl,
+    max_comments: request.maxComments || 50,
   });
-
-  if (!response.ok) throw new Error("YouTube comment analysis failed");
-  return await response.json();
+  return response.data.insights;
 };
